@@ -18,5 +18,12 @@ namespace GuessNumber.test
             var JudgeNumber = new JudgeNumber();
             Assert.AreEqual("0A0B", JudgeNumber.GetScore(new[] {1,2,3,4}, new[] {5,6,7,8}));
         }
+
+        [TestMethod]
+        public void should_return_0A4B_when_system_number_is_1234_and_input_number_is_4321()
+        {
+            var JudgeNumber = new JudgeNumber();
+            Assert.AreEqual("0A4B", JudgeNumber.GetScore(new[] {1,2,3,4}, new[] {4,3,2,1}));
+        }
     }
 }

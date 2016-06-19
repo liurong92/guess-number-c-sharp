@@ -5,14 +5,23 @@
         public string GetScore(int[] systemNumber, int[] inputNumber)
         {
             int resultA = 0;
-            for (int i = 0; i < inputNumber.Length; i++)
+            int resultB = 0;
+            for (int i = 0; i < systemNumber.Length; i++)
             {
-                if (inputNumber[i] == systemNumber[i])
+                if (systemNumber[i] == inputNumber[i])
                 {
                     resultA++;
                 }
+
+                for (int j = 0; j < inputNumber.Length; j++)
+                {
+                    if (inputNumber[j] == systemNumber[i])
+                    {
+                        resultB++;
+                    }
+                }
             }
-            return resultA.ToString() + "A0B";
+            return string.Format("{0}A{1}B", resultA, resultB-resultA);
         }
     }
 }
