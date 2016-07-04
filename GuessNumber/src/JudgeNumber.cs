@@ -1,27 +1,32 @@
-﻿namespace GuessNumber
+﻿using System;
+using System.Linq;
+
+namespace GuessNumber
 {
     public class JudgeNumber
     {
-        public string GetScore(int[] systemNumber, int[] inputNumber)
+        readonly char[] systemNumbers;
+        readonly char[] inputNumbers;
+
+        public JudgeNumber(string system, string input)
         {
-            int resultA = 0;
-            int resultB = 0;
-            for (int i = 0; i < systemNumber.Length; i++)
+            systemNumbers = system.ToCharArray();
+            inputNumbers = input.ToCharArray();
+        }
+
+        public string GetScore()
+        {
+            var resultA = 0;
+            var resultB = 0;
+            for (var i = 0; i < systemNumbers.Length; i++)
             {
-                if (systemNumber[i] == inputNumber[i])
+                if (systemNumbers[i] == inputNumbers[i])
                 {
                     resultA++;
                 }
-
-                for (int j = 0; j < inputNumber.Length; j++)
-                {
-                    if (inputNumber[j] == systemNumber[i])
-                    {
-                        resultB++;
-                    }
-                }
+                resultB += inputNumbers.Count(inputNumber => inputNumber == systemNumbers[i]);
             }
-            return string.Format("{0}A{1}B", resultA, resultB-resultA);
+            return string.Format("{0}A{1}B", resultA, resultB - resultA);
         }
     }
 }
