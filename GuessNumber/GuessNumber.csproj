@@ -50,8 +50,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="src\Generator.cs" />
     <Compile Include="src\JudgeNumber.cs" />
-    <Compile Include="test\GuessNumber.cs" />
+    <Compile Include="test\GeneratorTest.cs" />
+    <Compile Include="test\JudgeNumberTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
